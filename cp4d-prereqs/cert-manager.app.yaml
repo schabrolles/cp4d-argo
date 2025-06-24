@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cert-manager
+  namespace: openshift-gitops
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/schabrolles/cp4d-argo.git'
+    targetRevision: main
+    path: 'cert-manager'
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: cert-manager-operator
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
