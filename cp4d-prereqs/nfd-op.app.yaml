@@ -4,6 +4,12 @@ metadata:
   name: nfd-operator
   namespace: openshift-gitops
 spec:
+  ignoreDifferences:
+  - group: '*'
+    kind: '*'
+    managedFieldsManagers:
+    - kube-controller-manager
+    - nfd-operator 
   project: default
   source:
     repoURL: 'https://github.com/schabrolles/cp4d-argo.git'
@@ -11,7 +17,7 @@ spec:
     path: 'nfd-operator'
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: cert-manager-operator
+    namespace: openshift-nfd
   syncPolicy:
     automated:
       prune: false

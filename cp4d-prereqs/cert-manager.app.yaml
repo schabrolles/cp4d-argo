@@ -4,6 +4,12 @@ metadata:
   name: cert-manager
   namespace: openshift-gitops
 spec:
+  ignoreDifferences:
+  - group: '*'
+    kind: '*'
+    managedFieldsManagers:
+    - kube-controller-manager
+    - cert-manager-operator
   project: default
   source:
     repoURL: 'https://github.com/schabrolles/cp4d-argo.git'
