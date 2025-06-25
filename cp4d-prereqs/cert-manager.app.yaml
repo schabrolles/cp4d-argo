@@ -8,7 +8,6 @@ spec:
   - group: '*'
     kind: '*'
     managedFieldsManagers:
-    - kube-controller-manager
     - cert-manager-operator
   project: default
   source:
