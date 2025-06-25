@@ -1,0 +1,22 @@
+# apiVersion: project.openshift.io/v1
+# kind: Project
+# metadata:
+#   name: patch-operator
+# ---
+kind: Subscription
+metadata:
+  name: patch-operator
+  namespace: patch-operator
+spec:
+  channel: alpha
+  installPlanApproval: Automatic
+  name: patch-operator
+  source: community-operators
+  sourceNamespace: openshift-marketplace
+---
+kind: OperatorGroup
+metadata:
+  name: patch-operator
+  namespace: patch-operator
+spec:
+  upgradeStrategy: Default

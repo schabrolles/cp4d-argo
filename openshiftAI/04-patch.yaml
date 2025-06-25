@@ -2,6 +2,7 @@ apiVersion: redhatcop.redhat.io/v1alpha1
 kind: Patch
 metadata:
   name: patch-inferenceservice-config
+  namespace: redhat-ods-applications
 spec:
   patches:
     patch-inferenceservice-config:
