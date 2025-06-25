@@ -3,6 +3,7 @@
 # metadata:
 #   name: patch-operator
 # ---
+apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
 metadata:
   name: patch-operator
@@ -13,7 +14,16 @@ spec:
   name: patch-operator
   source: community-operators
   sourceNamespace: openshift-marketplace
+  config:
+    resources:
+      requests:
+        memory: "512Mi"
+        cpu: "1000m"
+      limits:
+        memory: "1024Mi"
+        cpu: "1500m"
 ---
+apiVersion: operators.coreos.com/v1
 kind: OperatorGroup
 metadata:
   name: patch-operator
