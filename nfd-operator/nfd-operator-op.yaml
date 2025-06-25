@@ -1,9 +1,9 @@
-apiVersion: project.openshift.io/v1
-kind: Project
-metadata:
-  name: openshift-nfd
-  labels:
-    app.kubernetes.io/instance: nfd-operator
+# apiVersion: project.openshift.io/v1
+# kind: Project
+# metadata:
+#   name: openshift-nfd
+#   labels:
+#     app.kubernetes.io/instance: nfd-operator
 ---
 apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription

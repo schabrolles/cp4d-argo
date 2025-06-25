@@ -1,7 +1,7 @@
-apiVersion: project.openshift.io/v1
-kind: Project
-metadata:
-  name: cert-manager-operator
+# apiVersion: project.openshift.io/v1
+# kind: Project
+# metadata:
+#   name: cert-manager-operator
 ---
 apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
