@@ -1,0 +1,16 @@
+apiVersion: redhatcop.redhat.io/v1alpha1
+kind: Patch
+metadata:
+  name: patch-inferenceservice-config
+spec:
+  patches:
+    patch-inferenceservice-config:
+      targetObjectRef:
+        apiVersion: v1
+        kind: ConfigMap
+        name: inferenceservice-config
+        namespace: redhat-ods-applications
+      patchTemplate: |
+        metadata:
+          annotations:
+            opendatahub.io/managed: "false"
