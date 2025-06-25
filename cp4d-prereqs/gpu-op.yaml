@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nvidia-gpu-operator
+  namespace: nvidia-gpu-operator
+  ignoreDifferences:
+  - group: '*'
+    kind: '*'
+    managedFieldsManagers:
+    - kube-controller-manager
+    - nvidia-gpu-operator
+  project: default
+  source:
+    repoURL: 'https://github.com/schabrolles/cp4d-argo.git'
+    targetRevision: main
+    path: 'gpu-operator'
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: nvidia-gpu-operator
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+
