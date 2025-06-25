@@ -4,8 +4,7 @@ metadata:
   name: patch-inferenceservice-config
   namespace: openshift-gitops
 spec:
-  serviceAccountRef:
-    openshift-gitops-argocd-application-controller
+  #serviceAccountRef: openshift-gitops-argocd-application-controller
   patches:
     patch-inferenceservice-config:
       targetObjectRef:
