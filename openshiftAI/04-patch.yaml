@@ -2,10 +2,10 @@ apiVersion: redhatcop.redhat.io/v1alpha1
 kind: Patch
 metadata:
   name: patch-inferenceservice-config
-  namespace: patch-operator
+  namespace: redhat-ods-applications
 spec:
   serviceAccountRef:
-    name: controller-manager
+    name: redhat-ods-operator-controller-manager
   patches:
     patch-inferenceservice-config:
       targetObjectRef:
