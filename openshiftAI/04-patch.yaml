@@ -13,6 +13,7 @@ spec:
         kind: ConfigMap
         name: inferenceservice-config
         namespace: redhat-ods-applications
+      patchType: application/strategic-merge-patch+json
       patchTemplate: |
         metadata:
           annotations:
