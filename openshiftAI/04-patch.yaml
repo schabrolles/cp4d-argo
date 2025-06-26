@@ -18,3 +18,18 @@ spec:
         metadata:
           annotations:
             opendatahub.io/managed: "false"
+        data:
+          ingress: |-
+            {
+              "disableIngressCreation": true,
+              "disableIstioVirtualHost": false,
+              "domainTemplate": "example.com",
+              "ingressClassName": "istio",
+              "ingressDomain": "example.com",
+              "ingressGateway": "knative-serving/knative-ingress-gateway",
+              "ingressService": "istio-ingressgateway.istio-system.svc.cluster.local",
+              "knativeLocalGatewayService": "knative-local-gateway.istio-system.svc.cluster.local",
+              "localGateway": "istio-system/kserve-local-gateway",
+              "localGatewayService": "kserve-local-gateway.istio-system.svc.cluster.local",
+              "urlScheme": "https"
+            }
