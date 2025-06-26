@@ -2,10 +2,10 @@ apiVersion: redhatcop.redhat.io/v1alpha1
 kind: Patch
 metadata:
   name: patch-inferenceservice-config
-  namespace: openshift-gitops
+  namespace: redhat-ods-applications
 spec:
-  serviceAccountRef:
-    name: openshift-gitops-argocd-application-controller
+  # serviceAccountRef:
+  #   name: openshift-gitops-argocd-application-controller
   patches:
     patch-inferenceservice-config:
       targetObjectRef:
