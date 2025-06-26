@@ -8,7 +8,7 @@ spec:
     namespace: cp4d-install
     server: https://kubernetes.default.svc
   source:
-    path: cp4d-prereqs
+    path: cp4d-prereqs/5.2.0
     repoURL: https://github.com/schabrolles/cp4d-argo.git
     targetRevision: HEAD
   sources: []

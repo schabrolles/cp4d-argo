@@ -1,0 +1,8 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: openshift-ai
+  namespace: openshift-gitops
+spec:
+    path: 'openshiftAI/2.19'
+
