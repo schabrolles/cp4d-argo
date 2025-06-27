@@ -27,7 +27,7 @@ spec:
         path: patch-operator
         revision: main
         namespace: patch-operator
-      - appName: openshiftAI
+      - appName: openshift-ai
         repoURL: https://github.com/schabrolles/cp4d-argo.git
         path: 'openshiftAI/2.19'
         revision: main
