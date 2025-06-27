@@ -1,22 +1,62 @@
 apiVersion: argoproj.io/v1alpha1
-kind: Application
+kind: ApplicationSet
 metadata:
   name: cp4d-prereqs
   namespace: openshift-gitops
 spec:
-  destination:
-    namespace: cp4d-install
-    server: https://kubernetes.default.svc
-  source:
-    path: cp4d-prereqs/5.2.0
-    repoURL: https://github.com/schabrolles/cp4d-argo.git
-    targetRevision: HEAD
-  sources: []
-  project: default
-  syncPolicy:
-    automated:
-      prune: false
-      selfHeal: false
-    syncOptions:
-      - PruneLast=true
-      - CreateNamespace=true
+  generators:
+  - list:
+      elements:
+      - appName: nfd-operator
+        repoURL: https://github.com/schabrolles/cp4d-argo.git
+        path: nfd-operator
+        namespace: openshift-nfd
+        revision: main
+      - appName: gpu-operator
+        repoURL: https://github.com/schabrolles/cp4d-argo.git
+        path: gpu-operator
+        revision: main
+        namespace: nvidia-gpu-operator
+      - appName: cert-manager
+        repoURL: https://github.com/schabrolles/cp4d-argo.git
+        path: cert-manager
+        revision: main
+        namespace: cert-manager-operator
+      - appName: openshiftAI
+        repoURL: https://github.com/schabrolles/cp4d-argo.git
+        path: 'openshiftAI/2.19'
+        revision: main
+        namespace: redhat-ods-operator
+      - appName: patch-operator
+        repoURL: https://github.com/schabrolles/cp4d-argo.git
+        path: patch-operator
+        revision: main
+        namespace: patch-operator
+  template:
+    metadata:
+      name: '{{appName}}'
+    spec:
+      ignoreDifferences:
+      - group: '*'
+        kind: '*'
+        managedFieldsManagers:
+        - kube-controller-manager
+        - nfd-operator
+        - cert-manager-operator
+        - gpu-operator
+        - patch-operator
+        - redhat-ods-operator
+      project: default
+      source:
+        repoURL: '{{repoURL}}'
+        targetRevision: '{{revision}}'
+        path: '{{path}}'
+      destination:
+        server: https://kubernetes.default.svc  # Cluster local
+        namespace: '{{namespace}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - CreateNamespace=true
