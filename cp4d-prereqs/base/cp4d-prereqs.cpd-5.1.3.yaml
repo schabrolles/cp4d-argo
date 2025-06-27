@@ -22,20 +22,21 @@ spec:
         path: cert-manager
         revision: main
         namespace: cert-manager-operator
-      - appName: openshiftAI
-        repoURL: https://github.com/schabrolles/cp4d-argo.git
-        path: 'openshiftAI/2.16'
-        revision: main
-        namespace: redhat-ods-operator
       - appName: patch-operator
         repoURL: https://github.com/schabrolles/cp4d-argo.git
         path: patch-operator
         revision: main
         namespace: patch-operator
+      - appName: openshiftAI
+        repoURL: https://github.com/schabrolles/cp4d-argo.git
+        path: 'openshiftAI/2.16'
+        revision: main
+        namespace: redhat-ods-operator
   template:
     metadata:
       name: '{{appName}}'
     spec:
+      applicationsSync: create-only
       ignoreDifferences:
       - group: '*'
         kind: '*'
@@ -56,7 +57,7 @@ spec:
         namespace: '{{namespace}}'
       syncPolicy:
         automated:
-          prune: true
-          selfHeal: true
+          prune: false
+          selfHeal: false
         syncOptions:
         - CreateNamespace=true

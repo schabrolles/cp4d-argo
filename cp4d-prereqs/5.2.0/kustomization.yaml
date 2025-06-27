@@ -4,4 +4,4 @@ resources:
 - ../base
 
 patches:
-- path: openshift-ai.app.yaml
+- path: openshift-ai.patch.yaml

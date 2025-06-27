@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: cp4d-prereqs
+  namespace: openshift-gitops
+spec:
+  generators:
+    - list:
+        elements:
+        - appName: nfd-operator
+          repoURL: https://github.com/schabrolles/cp4d-argo.git
+          path: nfd-operator
+          namespace: openshift-nfd
+          revision: main
+        - appName: gpu-operator
+          repoURL: https://github.com/schabrolles/cp4d-argo.git
+          path: gpu-operator
+          revision: main
+          namespace: nvidia-gpu-operator
+        - appName: cert-manager
+          repoURL: https://github.com/schabrolles/cp4d-argo.git
+          path: cert-manager
+          revision: main
+          namespace: cert-manager-operator
+        - appName: patch-operator
+          repoURL: https://github.com/schabrolles/cp4d-argo.git
+          path: patch-operator
+          revision: main
+          namespace: patch-operator
+        - appName: openshiftAI
+          repoURL: https://github.com/schabrolles/cp4d-argo.git
+          path: 'openshiftAI/2.16'
+          revision: main
+          namespace: redhat-ods-operator

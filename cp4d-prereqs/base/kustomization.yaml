@@ -1,8 +1,4 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-- cert-manager.app.yaml
-- gpu-op.yaml
-- nfd-op.app.yaml
-- openshift-ai.app.yaml
-- patch-op.yaml
+- cp4d-prereqs.cpd-5.1.3.yaml
