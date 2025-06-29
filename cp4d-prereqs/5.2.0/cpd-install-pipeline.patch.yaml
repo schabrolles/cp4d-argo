@@ -13,11 +13,5 @@ spec:
       parameters:
         - name: default_cpd_install
           value: watsonx
-    chart: cpd-install-pipeline
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: cpd-install
-  syncPolicy:
-    automated: {}
-    syncOptions:
-      - CreateNamespace=true
+        - name: version
+          value: 5.2.0

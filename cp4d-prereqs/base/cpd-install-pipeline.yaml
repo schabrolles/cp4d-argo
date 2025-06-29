@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cpd-install-pipeline
+spec:
+  project: default
+  source:
+    repoURL: https://schabrolles.github.io/cpd-install-pipeline
+    targetRevision: 2.2.0
+    helm:
+      valueFiles:
+        - values.yaml
+      parameters:
+        - name: default_cpd_install
+          value: watsonx
+        - name: version
+          value: 5.1.3
+    chart: cpd-install-pipeline
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: cpd-install
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - CreateNamespace=true
