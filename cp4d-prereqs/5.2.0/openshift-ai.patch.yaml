@@ -32,6 +32,11 @@ spec:
         path: 'openshift-pipelines'
         revision: main
         namespace: openshift-operators
+      - appName: cpd-install-pipelines
+        repoURL: https://github.com/schabrolles/cp4d-argo.git
+        path: 'cpd-install-pipeline'
+        revision: main
+        namespace: cpd-install
       - appName: openshift-ai
         repoURL: https://github.com/schabrolles/cp4d-argo.git
         path: 'openshiftAI/2.19'
