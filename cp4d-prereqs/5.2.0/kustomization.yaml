@@ -5,4 +5,4 @@ resources:
 
 patches:
 - path: openshift-ai.patch.yaml
-- path: cpd-install-pipeline.patch.yaml
+#- path: cpd-install-pipeline.patch.yaml

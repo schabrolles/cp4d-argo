@@ -1,0 +1,11 @@
+apiVersion: builtin
+kind: HelmChartInflationGenerator
+metadata:
+  name: cpd-install-pipeline
+name: cpd-install-pipeline
+repo: https://schabrolles.github.io/cpd-install-pipeline
+#version: v1.2.0
+releaseName: cpd-install
+namespace: cpd-install
+valuesFile: values.yaml
+includeCRDs: true
